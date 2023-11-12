@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const controllers_1 = require("./controllers");
+const controllers_2 = require("./controllers");
+const controllers_3 = require("./controllers");
+const userDal_1 = require("./userDal");
+const controllers_4 = require("./controllers");
+const express = require("express");
+const app = express();
+const router = express.Router();
+router.get("/all", controllers_2.getAllItems);
+router.get("/:id", controllers_3.getItemById);
+router.post("/new", controllers_1.newItem);
+router.put("/update/:id", userDal_1.updateItem);
+router.delete("/:id", controllers_4.deleteProuduct1);
+module.exports = router;
