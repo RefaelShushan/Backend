@@ -16,7 +16,7 @@ export const getAllItems = async (
     const data = await getAllItemsService();
     res.send(data);
   } catch (err) {
-    console.error("at controllers.js, line 6, func (getallItems)");
+    console.error("at controllers.ts, line 6, func (getallItems)");
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
@@ -32,7 +32,7 @@ export const getItemById = async (
       res.json("cant find the id");
     }
   } catch (err) {
-    console.error("at controllers.js, line 15, func (getItemById)");
+    console.error("at controllers.ts, line 35, func (getItemById)");
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
@@ -41,7 +41,7 @@ export const newItem = async (req: Request, res: Response): Promise<void> => {
     const data:string|any = await newItemOfService(req.body);
     res.send(data);
   } catch (err) {
-    console.error("at controllers.js, line 24, func (newItem)");
+    console.error("at controllers.ts, line 44, func (newItem)");
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
@@ -59,7 +59,7 @@ export const deleteProuduct1=async(req:Request,res:Response):Promise<void>=>{
     const data:string|any=await deleteProuduct(req.params.id)
     res.send(data)
   }catch(err){
-    console.error("at controllers.js, line 24, func (delelteitem)");
+    console.error("at controllers.ts, line 62, func (delelteitem)");
     res.status(400).json({ message: "Internal Server Error" });
   }
 }
