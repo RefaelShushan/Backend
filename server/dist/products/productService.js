@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProuduct = exports.updateItemOfService = exports.newItemOfService = exports.getItemByIdService = exports.getAllItemsService = void 0;
+exports.deleteProuduct = exports.updateItemOfService = exports.newItemOfService = exports.getserviceByCategory = exports.getItemByIdService = exports.getAllItemsService = void 0;
 // export {};
 // const userDal = require("./userDal");
 const productDal_1 = require("./productDal");
@@ -38,15 +38,27 @@ const getItemByIdService = (id) => __awaiter(void 0, void 0, void 0, function* (
     return console.error();
 });
 exports.getItemByIdService = getItemByIdService;
+const getserviceByCategory = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data1 = yield (0, productDal_1.readDataByCategory)(id);
+        console.log(data1);
+        return data1;
+    }
+    catch (err) {
+        console.error("at userService.js, line 14, func (getAllItems)");
+    }
+    return console.error();
+});
+exports.getserviceByCategory = getserviceByCategory;
 const newItemOfService = (item) => __awaiter(void 0, void 0, void 0, function* () {
     const writeData1 = yield (0, productDal_1.writeData)(item);
     return productDal_1.writeData;
 });
 exports.newItemOfService = newItemOfService;
 // mongo
-const updateItemOfService = (id, body) => __awaiter(void 0, void 0, void 0, function* () {
-    let numberid = Number(id);
-    let result = yield (0, productDal_1.updateItem)(numberid, body);
+const updateItemOfService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    // let numberid=Number(id)
+    let result = yield (0, productDal_1.updateItem)(id);
     return result;
 });
 exports.updateItemOfService = updateItemOfService;

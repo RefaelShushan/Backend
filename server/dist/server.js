@@ -25,14 +25,13 @@ const mongo_1 = require("./data/mongo");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const routerProducts_1 = __importDefault(require("./router/routerProducts"));
-// import userRouter from './router/userRouter';
+const userRouter_1 = __importDefault(require("./router/userRouter"));
 const categoryRouter_1 = __importDefault(require("./router/categoryRouter"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-// Trip routes
 app.use('/api/products', routerProducts_1.default);
-// app.use('/api/user', userRouter);
+app.use('/api/user', userRouter_1.default);
 app.use('/api/category', categoryRouter_1.default);
 app.listen(3000, () => {
     console.log(`Server is up and running`);

@@ -17,4 +17,6 @@ router.post('/', controllers_1.newItem);
 router.put('/:id', controllers_1.updateItem);
 // Delete a trip by ID (protected with requireAuth)
 router.delete('/:id', controllers_1.deleteProuduct1);
+// get by category match
+router.get('/category/:id', controllers_1.getItemBycategory);
 exports.default = router;

@@ -1,0 +1,146 @@
+[
+    {
+      "name": "iPhone 13",
+      "category": "phones",
+      "price": 1099.99,
+      "popularity": 5,
+      "storage": 128,
+      "screen_size": 6.1,
+      "image_link": "https://example.com/iphone13_image.jpg"
+    },
+    {
+      "name": "Samsung Galaxy S21",
+      "category": "phones",
+      "price": 899.99,
+      "popularity": 4,
+      "storage": 256,
+      "screen_size": 6.2,
+      "image_link": "https://example.com/samsungs21_image.jpg"
+    },
+    {
+      "name": "Google Pixel 6",
+      "category": "phones",
+      "price": 799.99,
+      "popularity": 3,
+      "storage": 128,
+      "screen_size": 6.4,
+      "image_link": "https://example.com/pixel6_image.jpg"
+    },
+    {
+      "name": "OnePlus 9 Pro",
+      "category": "phones",
+      "price": 1199.99,
+      "popularity": 4,
+      "storage": 256,
+      "screen_size": 6.7,
+      "image_link": "https://example.com/oneplus9pro_image.jpg"
+    },
+    {
+      "name": "Xiaomi Mi 11",
+      "category": "phones",
+      "price": 899.99,
+      "popularity": 3,
+      "storage": 128,
+      "screen_size": 6.81,
+      "image_link": "https://example.com/mi11_image.jpg"
+    },
+    {
+      "name": "Sony Xperia 5 III",
+      "category": "phones",
+      "price": 1299.99,
+      "popularity": 4,
+      "storage": 256,
+      "screen_size": 6.1,
+      "image_link": "https://example.com/xperia5iii_image.jpg"
+    },
+    {
+      "name": "Google Pixel 5a",
+      "category": "phones",
+      "price": 499.99,
+      "popularity": 3,
+      "storage": 128,
+      "screen_size": 6.34,
+      "image_link": "https://example.com/pixel5a_image.jpg"
+    },
+    {
+      "name": "iPhone SE",
+      "category": "phones",
+      "price": 399.99,
+      "popularity": 4,
+      "storage": 64,
+      "screen_size": 4.7,
+      "image_link": "https://example.com/iphonese_image.jpg"
+    },
+    {
+      "name": "Samsung French Door Refrigerator",
+      "category": "refrigerators",
+      "price": 1999.99,
+      "popularity": 4,
+      "capacity": 22,
+      "door_count": 3,
+      "image_link": "https://example.com/samsungfridge_image.jpg"
+    },
+    {
+      "name": "LG Side-by-Side Refrigerator",
+      "category": "refrigerators",
+      "price": 1499.99,
+      "popularity": 3,
+      "capacity": 26,
+      "door_count": 2,
+      "image_link": "https://example.com/lgfridge_image.jpg"
+    },
+    {
+      "name": "Whirlpool Bottom Freezer Refrigerator",
+      "category": "refrigerators",
+      "price": 1299.99,
+      "popularity": 4,
+      "capacity": 18,
+      "door_count": 2,
+      "image_link": "https://example.com/whirlpoolfridge_image.jpg"
+    },
+    {
+      "name": "GE Top Freezer Refrigerator",
+      "category": "refrigerators",
+      "price": 899.99,
+      "popularity": 3,
+      "capacity": 16,
+      "door_count": 1,
+      "image_link": "https://example.com/gefridge_image.jpg"
+    },
+    {
+      "name": "KitchenAid French Door Refrigerator",
+      "category": "refrigerators",
+      "price": 2399.99,
+      "popularity": 5,
+      "capacity": 25,
+      "door_count": 4,
+      "image_link": "https://example.com/kitchenaidfridge_image.jpg"
+    },
+    {
+      "name": "Frigidaire Side-by-Side Refrigerator",
+      "category": "refrigerators",
+      "price": 1099.99,
+      "popularity": 3,
+      "capacity": 20,
+      "door_count": 2,
+      "image_link": "https://example.com/frigidairefridge_image.jpg"
+    },
+    {
+      "name": "Maytag French Door Refrigerator",
+      "category": "refrigerators",
+      "price": 1799.99,
+      "popularity": 4,
+      "capacity": 24,
+      "door_count": 3,
+      "image_link": "https://example.com/maytagfridge_image.jpg"
+    },
+    {
+      "name": "Haier Top Freezer Refrigerator",
+      "category": "refrigerators",
+      "price": 699.99,
+      "popularity": 2,
+      "capacity": 15,
+      "door_count": 1,
+      "image_link": "https://example.com/haierfridge_image.jpg"
+    }
+]

@@ -9,13 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProuduct1 = exports.updateItem = exports.newItem = exports.getItemById = exports.getAllItems = void 0;
+exports.deleteProuduct1 = exports.updateItem = exports.newItem = exports.getItemBycategory = exports.getItemById = exports.getAllItems = void 0;
 const userService = require("./userService");
 const productService_1 = require("./productService");
 const productService_2 = require("./productService");
 const productService_3 = require("./productService");
 const productService_4 = require("./productService");
 const productService_5 = require("./productService");
+const productService_6 = require("./productService");
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, productService_1.getAllItemsService)();
@@ -43,6 +44,22 @@ const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getItemById = getItemById;
+const getItemBycategory = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, productService_6.getserviceByCategory)(req.params.id);
+        if (data) {
+            res.send(data);
+        }
+        else {
+            res.json("cant find the id");
+        }
+    }
+    catch (err) {
+        console.error("at controllers.ts, line 35, func (getItemById)");
+        res.status(400).json({ message: "Internal Server Error" });
+    }
+});
+exports.getItemBycategory = getItemBycategory;
 const newItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, productService_3.newItemOfService)(req.body);
@@ -56,7 +73,7 @@ const newItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.newItem = newItem;
 const updateItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, productService_4.updateItemOfService)(req.params.id, req.body);
+        const data = yield (0, productService_4.updateItemOfService)(req.params.id);
         res.send(data);
     }
     catch (err) {

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem = exports.updateItem = exports.writeData = exports.readDataById = exports.readData = void 0;
+exports.deleteItem = exports.updateItem = exports.writeData = exports.readDataByCategory = exports.readDataById = exports.readData = void 0;
 // const client = new MongoClient('mongodb+srv://yehuda9955:F0jiS7OCoKEb5kJM@cluster0.ijcfz0y.mongodb.net/test?retryWrites=true&w=majority');
 const mongo_1 = require("../data/mongo");
 // dataInterFace[]
@@ -30,6 +30,14 @@ const readDataById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return findResult;
 });
 exports.readDataById = readDataById;
+const readDataByCategory = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongo_1.client.db("kodecode");
+    const collection = db.collection("products");
+    const findResult = yield collection.findOne({ "category": id });
+    console.log(findResult);
+    return findResult;
+});
+exports.readDataByCategory = readDataByCategory;
 const writeData = (item) => __awaiter(void 0, void 0, void 0, function* () {
     yield mongo_1.client.connect();
     const db = mongo_1.client.db("kodecode");
@@ -39,15 +47,26 @@ const writeData = (item) => __awaiter(void 0, void 0, void 0, function* () {
     return collection;
 });
 exports.writeData = writeData;
-const updateItem = (id, body) => __awaiter(void 0, void 0, void 0, function* () {
+// export const updateItem=async(id:number,body:dataInterFace):Promise<any>=>{
+//   const db = client.db("kodecode");
+//   const collection:any = db.collection("products");
+//   console.log(id)
+//   const updateResult = await collection.updateOne(
+//     { id: id },
+//     { $set: { id:id,
+//     name:body.name,
+//     price:body.price,
+//     category:body.category,
+//     popularity:body.popularity,
+//  } }
+//     );
+//     return updateResult;   
+// }
+const updateItem = (id1) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
-    const collection = db.collection("products");
-    console.log(id);
-    const updateResult = yield collection.updateOne({ id: id }, { $set: { id: id,
-            name: body.name,
-            price: body.price,
-            category: body.category,
-            popularity: body.popularity,
+    const collection = db.collection("category");
+    const { popularity } = yield (0, exports.readDataById)(id1);
+    const updateResult = yield collection.updateOne({ "id": id1 }, { $set: { "popularity": Number(popularity) + 1
         } });
     return updateResult;
 });

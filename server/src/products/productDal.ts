@@ -30,6 +30,13 @@ export const readDataById = async (id: string): Promise<any | null> => {
   console.log(findResult);
   return findResult;
 };
+export const readDataByCategory = async (id: string): Promise<any | null> => {
+  const db = client.db("kodecode");
+  const collection = db.collection("products");
+  const findResult = await collection.findOne({ "category":id });
+  console.log(findResult);
+  return findResult;
+};
 export const writeData = async (item:any):Promise<any> => {
   await client.connect();
   const db = client.db("kodecode");
@@ -38,17 +45,28 @@ export const writeData = async (item:any):Promise<any> => {
   console.log(collection)
   return collection
 };
-export const updateItem=async(id:number,body:dataInterFace):Promise<any>=>{
+// export const updateItem=async(id:number,body:dataInterFace):Promise<any>=>{
+//   const db = client.db("kodecode");
+//   const collection:any = db.collection("products");
+//   console.log(id)
+//   const updateResult = await collection.updateOne(
+//     { id: id },
+//     { $set: { id:id,
+//     name:body.name,
+//     price:body.price,
+//     category:body.category,
+//     popularity:body.popularity,
+//  } }
+//     );
+//     return updateResult;   
+// }
+export const updateItem=async(id1:string):Promise<any>=>{
   const db = client.db("kodecode");
-  const collection:any = db.collection("products");
-  console.log(id)
+  const collection:any = db.collection("category");
+  const {popularity} = await readDataById(id1)
   const updateResult = await collection.updateOne(
-    { id: id },
-    { $set: { id:id,
-    name:body.name,
-    price:body.price,
-    category:body.category,
-    popularity:body.popularity,
+    { "id": id1 },
+    { $set: { "popularity":Number(popularity) + 1
  } }
     );
     return updateResult;   
