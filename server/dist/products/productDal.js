@@ -9,11 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem = exports.updateItem = exports.writeData = exports.readDataByCategory = exports.readDataById = exports.readData = void 0;
+exports.deleteItem = exports.updateItem = exports.readTopProductsDal = exports.writeData = exports.readDataByCategory = exports.readDataById = exports.readData = void 0;
 // const client = new MongoClient('mongodb+srv://yehuda9955:F0jiS7OCoKEb5kJM@cluster0.ijcfz0y.mongodb.net/test?retryWrites=true&w=majority');
 const mongo_1 = require("../data/mongo");
 // dataInterFace[]
-// mongo   
+// mongo
 const readData = () => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("products");
@@ -25,7 +25,7 @@ exports.readData = readData;
 const readDataById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("products");
-    const findResult = yield collection.findOne({ "id": Number(id) });
+    const findResult = yield collection.findOne({ id: Number(id) });
     console.log(findResult);
     return findResult;
 });
@@ -34,7 +34,7 @@ const readDataByCategory = (id) => __awaiter(void 0, void 0, void 0, function* (
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("products");
     // .toArray();
-    const findResult = yield collection.find({ "category": id }).toArray();
+    const findResult = yield collection.find({ category: id }).toArray();
     console.log(findResult, "lll");
     return findResult;
 });
@@ -48,6 +48,25 @@ const writeData = (item) => __awaiter(void 0, void 0, void 0, function* () {
     return collection;
 });
 exports.writeData = writeData;
+const readTopProductsDal = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const db = mongo_1.client.db("kodecode");
+        const collection = db.collection("products");
+        const findResult = yield collection
+            .find({})
+            .sort({ popularity: -1 })
+            .limit(2)
+            .toArray();
+        console.log(findResult, "lll");
+        console.log("kkk");
+        return findResult;
+    }
+    catch (error) {
+        console.error("Error in readTopProducts:", error);
+        return null;
+    }
+});
+exports.readTopProductsDal = readTopProductsDal;
 // export const updateItem=async(id:number,body:dataInterFace):Promise<any>=>{
 //   const db = client.db("kodecode");
 //   const collection:any = db.collection("products");
@@ -61,14 +80,13 @@ exports.writeData = writeData;
 //     popularity:body.popularity,
 //  } }
 //     );
-//     return updateResult;   
+//     return updateResult;
 // }
 const updateItem = (id1) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
-    const collection = db.collection("category");
+    const collection = db.collection("products");
     const { popularity } = yield (0, exports.readDataById)(id1);
-    const updateResult = yield collection.updateOne({ "id": id1 }, { $set: { "popularity": Number(popularity) + 1
-        } });
+    const updateResult = yield collection.updateOne({ id: id1 }, { $set: { popularity: Number(popularity) + 1 } });
     return updateResult;
 });
 exports.updateItem = updateItem;

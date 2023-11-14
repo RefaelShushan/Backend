@@ -1,6 +1,6 @@
 // export {};
 // const userDal = require("./userDal");
-import {readData, writeData,updateItem,deleteItem,readDataById}  from "./categoryDal"
+import {readData, writeData,updateItem,deleteItem,readDataById,readTopCategoryDal}  from "./categoryDal"
 import { dataInterFace } from "./categoryDal";
 export const getAllItemsService = async ():Promise<any> => {
   // get all items
@@ -32,6 +32,18 @@ export const getAllItemsService = async ():Promise<any> => {
       const writeData1:any|string=await writeData(item)
       return writeData;
     }
+    export const readTopCategoryService = async (): Promise<
+  dataInterFace | unknown
+> => {
+  try {
+    const data = await readTopCategoryDal();
+    console.log(data, "ggg");
+    return data;
+  } catch (err) {
+    console.error("at userService.js, line 14, func (getAllItems)");
+  }
+  return console.error();
+};
 // mongo
 export const updateItemOfService=async(id:string):Promise<string|undefined>=>{
   let numberid=Number(id)

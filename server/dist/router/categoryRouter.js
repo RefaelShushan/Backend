@@ -10,7 +10,8 @@ const router = express_1.default.Router();
 // Get all trips
 router.get('/', controllers_1.getAllItems);
 // Get a trip by ID
-router.get('/:id', controllers_1.getItemById);
+router.get('/spesific/:id', controllers_1.getItemById);
 // Update a trip by ID (protected with requireAuth)
 router.put('/:id', controllers_1.updateItem);
+router.get('/popularity', controllers_1.readTopCategory);
 exports.default = router;

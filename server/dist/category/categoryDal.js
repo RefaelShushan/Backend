@@ -9,11 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem = exports.updateItem = exports.writeData = exports.readDataById = exports.readData = void 0;
+exports.deleteItem = exports.readTopCategoryDal = exports.updateItem = exports.writeData = exports.readDataById = exports.readData = void 0;
 // const client = new MongoClient('mongodb+srv://yehuda9955:F0jiS7OCoKEb5kJM@cluster0.ijcfz0y.mongodb.net/test?retryWrites=true&w=majority');
 const mongo_1 = require("../data/mongo");
 // dataInterFace[]
-// mongo   
+// mongo
 const readData = () => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("category");
@@ -25,7 +25,7 @@ exports.readData = readData;
 const readDataById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("category");
-    const findResult = yield collection.findOne({ "id": id });
+    const findResult = yield collection.findOne({ id: Number(id) });
     console.log(findResult);
     return findResult;
 });
@@ -43,11 +43,33 @@ const updateItem = (id1) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("category");
     const { popularity } = yield (0, exports.readDataById)(id1);
-    const updateResult = yield collection.updateOne({ "id": id1 }, { $set: { "popularity": Number(popularity) + 1
-        } });
+    console.log(popularity, "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+    console.log(id1);
+    const updateResult = yield collection.updateOne({ id: id1 }, { $set: { popularity: Number(popularity) + 1 } });
+    // console.log(updateResult,"kkkkkkkk")
+    // console.log(await collection.find({}))
     return updateResult;
 });
 exports.updateItem = updateItem;
+const readTopCategoryDal = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const db = mongo_1.client.db("kodecode");
+        const collection = db.collection("products");
+        const findResult = yield collection
+            .find({})
+            .sort({ popularity: -1 })
+            .limit(5)
+            .toArray();
+        console.log(findResult, "lll");
+        console.log("kkk");
+        return findResult;
+    }
+    catch (error) {
+        console.error("Error in readTopProducts:", error);
+        return null;
+    }
+});
+exports.readTopCategoryDal = readTopCategoryDal;
 const deleteItem = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("category");

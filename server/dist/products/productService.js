@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProuduct = exports.updateItemOfService = exports.newItemOfService = exports.getserviceByCategory = exports.getItemByIdService = exports.getAllItemsService = void 0;
+exports.deleteProuduct = exports.updateItemOfService = exports.newItemOfService = exports.readTopProductsService = exports.getserviceByCategory = exports.getItemByIdService = exports.getAllItemsService = void 0;
 // export {};
 // const userDal = require("./userDal");
 const productDal_1 = require("./productDal");
@@ -29,7 +29,7 @@ exports.getAllItemsService = getAllItemsService;
 const getItemByIdService = (id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data1 = yield (0, productDal_1.readDataById)(id);
-        console.log(data1);
+        console.log(data1, "jgdua");
         return data1;
     }
     catch (err) {
@@ -50,6 +50,18 @@ const getserviceByCategory = (id) => __awaiter(void 0, void 0, void 0, function*
     return console.error();
 });
 exports.getserviceByCategory = getserviceByCategory;
+const readTopProductsService = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, productDal_1.readTopProductsDal)();
+        console.log(data, "ggg");
+        return data;
+    }
+    catch (err) {
+        console.error("at userService.js, line 14, func (getAllItems)");
+    }
+    return console.error();
+});
+exports.readTopProductsService = readTopProductsService;
 const newItemOfService = (item) => __awaiter(void 0, void 0, void 0, function* () {
     const writeData1 = yield (0, productDal_1.writeData)(item);
     return productDal_1.writeData;
@@ -57,7 +69,7 @@ const newItemOfService = (item) => __awaiter(void 0, void 0, void 0, function* (
 exports.newItemOfService = newItemOfService;
 // mongo
 const updateItemOfService = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    // let numberid=Number(id)
+    let numberid = Number(id);
     let result = yield (0, productDal_1.updateItem)(id);
     return result;
 });

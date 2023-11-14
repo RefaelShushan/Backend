@@ -30,7 +30,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/products', productrouter);
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 app.use('/api/category',categoryRouter)
 
 app.listen(3000, () => {

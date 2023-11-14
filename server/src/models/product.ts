@@ -7,3 +7,4 @@ export interface products {
     'screen_size': number,
     'image_link': string
   }
+  

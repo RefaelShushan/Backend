@@ -19,6 +19,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = req.body;
         user._id = (0, uuid_1.v1)();
         user.email = user.email;
+        user.name = user.name;
         user.password = (0, bcrypt_1.generateUserPassword)(user.password);
         user.isAdmin = user.isAdmin || false;
         const data = yield (0, userService_1.registerService)(user);
