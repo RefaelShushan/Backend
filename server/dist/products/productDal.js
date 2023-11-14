@@ -33,8 +33,9 @@ exports.readDataById = readDataById;
 const readDataByCategory = (id) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("products");
-    const findResult = yield collection.findOne({ "category": id });
-    console.log(findResult);
+    // .toArray();
+    const findResult = yield collection.find({ "category": id }).toArray();
+    console.log(findResult, "lll");
     return findResult;
 });
 exports.readDataByCategory = readDataByCategory;

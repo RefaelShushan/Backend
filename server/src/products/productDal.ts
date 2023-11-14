@@ -33,8 +33,9 @@ export const readDataById = async (id: string): Promise<any | null> => {
 export const readDataByCategory = async (id: string): Promise<any | null> => {
   const db = client.db("kodecode");
   const collection = db.collection("products");
-  const findResult = await collection.findOne({ "category":id });
-  console.log(findResult);
+  // .toArray();
+  const findResult = await collection.find({ "category":id }).toArray()
+  console.log(findResult,"lll");
   return findResult;
 };
 export const writeData = async (item:any):Promise<any> => {
