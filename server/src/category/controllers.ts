@@ -4,6 +4,7 @@ import { Response, Request } from "express";
 import { getAllItemsService } from "./categoryService";
 import { getItemByIdService } from "./categoryService";
 import { updateItemOfService } from "./categoryService";
+import { readTopCategoryService } from "./categoryService";
 export const getAllItems = async (
   req: Request,
   res: Response
@@ -25,10 +26,25 @@ export const getItemById = async (
     if (data) {
       res.send(data);
     } else {
-      res.json("cant find the id");
+      res.json("cant find the id by id ");
+      console.log(data,'hfsfsf')
     }
   } catch (err) {
     console.error("at controllers.ts, line 35, func (getItemById)");
+    res.status(400).json({ message: "Internal Server Error" });
+  }
+};
+export const readTopCategory = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const data = await readTopCategoryService();
+    console.log("elchi1")
+    res.send(data);
+  } catch (err) {
+    console.log("elchi")
+    console.error("at controllers.ts, line 6, func (getallItems)");
     res.status(400).json({ message: "Internal Server Error" });
   }
 };

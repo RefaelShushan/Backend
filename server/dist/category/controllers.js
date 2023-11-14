@@ -9,11 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateItem = exports.getItemById = exports.getAllItems = void 0;
+exports.updateItem = exports.readTopCategory = exports.getItemById = exports.getAllItems = void 0;
 // const userService = require("./userService");
 const categoryService_1 = require("./categoryService");
 const categoryService_2 = require("./categoryService");
 const categoryService_3 = require("./categoryService");
+const categoryService_4 = require("./categoryService");
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, categoryService_1.getAllItemsService)();
@@ -32,7 +33,8 @@ const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res.send(data);
         }
         else {
-            res.json("cant find the id");
+            res.json("cant find the id by id ");
+            console.log(data, 'hfsfsf');
         }
     }
     catch (err) {
@@ -41,6 +43,19 @@ const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getItemById = getItemById;
+const readTopCategory = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, categoryService_4.readTopCategoryService)();
+        console.log("elchi1");
+        res.send(data);
+    }
+    catch (err) {
+        console.log("elchi");
+        console.error("at controllers.ts, line 6, func (getallItems)");
+        res.status(400).json({ message: "Internal Server Error" });
+    }
+});
+exports.readTopCategory = readTopCategory;
 const updateItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, categoryService_3.updateItemOfService)(req.params.id);

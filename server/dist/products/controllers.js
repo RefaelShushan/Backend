@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProuduct1 = exports.updateItem = exports.newItem = exports.getItemBycategory = exports.getItemById = exports.getAllItems = void 0;
+exports.deleteProuduct1 = exports.updateItem = exports.newItem = exports.readTopProducts = exports.getItemBycategory = exports.getItemById = exports.getAllItems = void 0;
 const userService = require("./userService");
 const productService_1 = require("./productService");
 const productService_2 = require("./productService");
@@ -17,6 +17,7 @@ const productService_3 = require("./productService");
 const productService_4 = require("./productService");
 const productService_5 = require("./productService");
 const productService_6 = require("./productService");
+const productService_7 = require("./productService");
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, productService_1.getAllItemsService)();
@@ -35,7 +36,7 @@ const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res.send(data);
         }
         else {
-            res.json("cant find the id");
+            res.json("cant find the id all");
         }
     }
     catch (err) {
@@ -51,7 +52,7 @@ const getItemBycategory = (req, res) => __awaiter(void 0, void 0, void 0, functi
             res.send(data);
         }
         else {
-            res.json("cant find the id");
+            res.json("cant find the id category");
         }
     }
     catch (err) {
@@ -60,6 +61,19 @@ const getItemBycategory = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.getItemBycategory = getItemBycategory;
+const readTopProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, productService_7.readTopProductsService)();
+        console.log("elchi1");
+        res.send(data);
+    }
+    catch (err) {
+        console.log("elchi");
+        console.error("at controllers.ts, line 6, func (getallItems)");
+        res.status(400).json({ message: "Internal Server Error" });
+    }
+});
+exports.readTopProducts = readTopProducts;
 const newItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, productService_3.newItemOfService)(req.body);

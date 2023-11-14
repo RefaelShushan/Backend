@@ -7,16 +7,11 @@ const express_1 = __importDefault(require("express"));
 // import { requireAuth } from '../middleware/auth';
 const controllers_1 = require("../products/controllers");
 const router = express_1.default.Router();
-// Get all trips
 router.get('/', controllers_1.getAllItems);
-// Get a trip by ID
-router.get('/:id', controllers_1.getItemById);
-// Create a new trip (protected with requireAuth)
+router.get('/spesific/:id', controllers_1.getItemById);
 router.post('/', controllers_1.newItem);
-// Update a trip by ID (protected with requireAuth)
 router.put('/:id', controllers_1.updateItem);
-// Delete a trip by ID (protected with requireAuth)
 router.delete('/:id', controllers_1.deleteProuduct1);
-// get by category match
 router.get('/category/:id', controllers_1.getItemBycategory);
+router.get('/popularity', controllers_1.readTopProducts);
 exports.default = router;

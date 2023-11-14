@@ -10,6 +10,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     const user: UserInterface = req.body;
     user._id = uuid1();
     user.email = user.email;
+    user.name=user.name
     user.password = generateUserPassword(user.password);
     user.isAdmin = user.isAdmin || false;
     const data: string | any = await registerService(user);
