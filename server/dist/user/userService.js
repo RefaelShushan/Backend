@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginService = exports.registerService = void 0;
+exports.getUserByEmailService = exports.loginService = exports.registerService = void 0;
 const userDal_1 = require("./userDal");
 const registerService = (item) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield (0, userDal_1.registerdal)(item);
@@ -29,3 +29,14 @@ const loginService = () => __awaiter(void 0, void 0, void 0, function* () {
     return console.error();
 });
 exports.loginService = loginService;
+const getUserByEmailService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data1 = yield (0, userDal_1.getUserByEmailDal)(id);
+        return true;
+    }
+    catch (err) {
+        console.error("at userService.js, line 14, func (getAllItems)");
+    }
+    return console.error();
+});
+exports.getUserByEmailService = getUserByEmailService;

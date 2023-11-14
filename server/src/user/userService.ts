@@ -1,5 +1,5 @@
 import UserInterface, { LoginInterface } from "../models/user";
-import { registerdal, loginDal } from "./userDal";
+import { registerdal, loginDal ,getUserByEmailDal} from "./userDal";
 
 export const registerService = async (
   item: UserInterface
@@ -18,3 +18,12 @@ export const loginService = async (): Promise<UserInterface | unknown> => {
   }
   return console.error();
 };
+export const getUserByEmailService= async (id: string): Promise<any> => {
+    try {
+      const data1 = await getUserByEmailDal(id);
+      return true;
+    } catch (err) {
+      console.error("at userService.js, line 14, func (getAllItems)");
+    }
+    return console.error();
+  };

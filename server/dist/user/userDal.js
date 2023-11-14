@@ -9,14 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginDal = exports.registerdal = void 0;
+exports.getUserByEmailDal = exports.loginDal = exports.registerdal = void 0;
 const mongo_1 = require("../data/mongo");
 const registerdal = (item) => __awaiter(void 0, void 0, void 0, function* () {
     yield mongo_1.client.connect();
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("users");
     const oneDoc = yield collection.insertOne(item);
-    console.log(collection);
+    //   console.log(collection);
+    console.log(oneDoc);
     return collection;
 });
 exports.registerdal = registerdal;
@@ -28,3 +29,12 @@ const loginDal = () => __awaiter(void 0, void 0, void 0, function* () {
     return findResult;
 });
 exports.loginDal = loginDal;
+const getUserByEmailDal = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongo_1.client.db("kodecode");
+    const collection = db.collection("users");
+    // .toArray();
+    const findResult = yield collection.find({ email: id }).toArray();
+    console.log(findResult, "findResult");
+    return true;
+});
+exports.getUserByEmailDal = getUserByEmailDal;
