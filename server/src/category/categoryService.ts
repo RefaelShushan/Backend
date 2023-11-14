@@ -46,7 +46,7 @@ export const getAllItemsService = async ():Promise<any> => {
 };
 // mongo
 export const updateItemOfService=async(id:string):Promise<string|undefined>=>{
-  let numberid=Number(id)
+  // let numberid=Number(id)
   let result:string|undefined=await updateItem(id)
   return result
 }

@@ -57,7 +57,7 @@ const readTopCategoryService = () => __awaiter(void 0, void 0, void 0, function*
 exports.readTopCategoryService = readTopCategoryService;
 // mongo
 const updateItemOfService = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    let numberid = Number(id);
+    // let numberid=Number(id)
     let result = yield (0, categoryDal_1.updateItem)(id);
     return result;
 });
