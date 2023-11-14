@@ -12,11 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProuduct = exports.updateItemOfService = exports.newItemOfService = exports.getItemByIdService = exports.getAllItemsService = void 0;
 // export {};
 // const userDal = require("./userDal");
-const userDal_1 = require("./products/userDal");
+const productDal_1 = require("./productDal");
 const getAllItemsService = () => __awaiter(void 0, void 0, void 0, function* () {
     // get all items
     try {
-        const data = yield (0, userDal_1.readData)();
+        const data = yield (0, productDal_1.readData)();
         console.log(data);
         return data;
     }
@@ -27,7 +27,7 @@ const getAllItemsService = () => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.getAllItemsService = getAllItemsService;
 const getItemByIdService = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const data1 = yield (0, userDal_1.readData)();
+    const data1 = yield (0, productDal_1.readData)();
     let result;
     data1.forEach((element) => {
         if (element.id === Number(id)) {
@@ -43,7 +43,7 @@ const getItemByIdService = (id) => __awaiter(void 0, void 0, void 0, function* (
 });
 exports.getItemByIdService = getItemByIdService;
 const newItemOfService = (item) => __awaiter(void 0, void 0, void 0, function* () {
-    const data1 = yield (0, userDal_1.readData)();
+    const data1 = yield (0, productDal_1.readData)();
     let newId = 0;
     data1.forEach((element) => {
         if (element.id > newId) {
@@ -52,8 +52,8 @@ const newItemOfService = (item) => __awaiter(void 0, void 0, void 0, function* (
     });
     item.id = newId + 1;
     data1.push(item);
-    const writeData1 = yield (0, userDal_1.writeData)(item);
-    return userDal_1.writeData;
+    const writeData1 = yield (0, productDal_1.writeData)(item);
+    return productDal_1.writeData;
 });
 exports.newItemOfService = newItemOfService;
 // export const newItemOfService = async (item:dataInterFace)
@@ -86,13 +86,13 @@ exports.newItemOfService = newItemOfService;
 // mongo
 const updateItemOfService = (id, body) => __awaiter(void 0, void 0, void 0, function* () {
     let numberid = Number(id);
-    let result = yield (0, userDal_1.updateItem)(numberid, body);
+    let result = yield (0, productDal_1.updateItem)(numberid, body);
     return result;
 });
 exports.updateItemOfService = updateItemOfService;
 const deleteProuduct = (id) => __awaiter(void 0, void 0, void 0, function* () {
     let numberid = Number(id);
-    let result = yield (0, userDal_1.deleteItem)(numberid);
+    let result = yield (0, productDal_1.deleteItem)(numberid);
     return result;
 });
 exports.deleteProuduct = deleteProuduct;

@@ -1,12 +1,12 @@
 export {};
 import { Response, Request } from "express";
 const userService = require("./userService");
-import { getAllItemsService } from "./userService";
-import { getItemByIdService } from "./userService";
-import { dataInterFace } from "./userDal";
-import {newItemOfService} from "./userService"
-import { updateItemOfService } from "./userService";
-import { deleteProuduct } from "./userService";
+import { getAllItemsService } from "./productService";
+import { getItemByIdService } from "./productService";
+import { dataInterFace } from "./productDal";
+import {newItemOfService} from "./productService"
+import { updateItemOfService } from "./productService";
+import { deleteProuduct } from "./productService";
 
 export const getAllItems = async (
   req: Request,

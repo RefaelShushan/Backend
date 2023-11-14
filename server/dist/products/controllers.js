@@ -11,14 +11,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProuduct1 = exports.updateItem = exports.newItem = exports.getItemById = exports.getAllItems = void 0;
 const userService = require("./userService");
-const userService_1 = require("./userService");
-const userService_2 = require("./userService");
-const userService_3 = require("./userService");
-const userService_4 = require("./userService");
-const userService_5 = require("./userService");
+const productService_1 = require("./productService");
+const productService_2 = require("./productService");
+const productService_3 = require("./productService");
+const productService_4 = require("./productService");
+const productService_5 = require("./productService");
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, userService_1.getAllItemsService)();
+        const data = yield (0, productService_1.getAllItemsService)();
         res.send(data);
     }
     catch (err) {
@@ -29,7 +29,7 @@ const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getAllItems = getAllItems;
 const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, userService_2.getItemByIdService)(req.params.id);
+        const data = yield (0, productService_2.getItemByIdService)(req.params.id);
         if (data) {
             res.send(data);
         }
@@ -45,7 +45,7 @@ const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getItemById = getItemById;
 const newItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, userService_3.newItemOfService)(req.body);
+        const data = yield (0, productService_3.newItemOfService)(req.body);
         res.send(data);
     }
     catch (err) {
@@ -56,7 +56,7 @@ const newItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.newItem = newItem;
 const updateItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, userService_4.updateItemOfService)(req.params.id, req.body);
+        const data = yield (0, productService_4.updateItemOfService)(req.params.id, req.body);
         res.send(data);
     }
     catch (err) {
@@ -67,7 +67,7 @@ const updateItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.updateItem = updateItem;
 const deleteProuduct1 = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, userService_5.deleteProuduct)(req.params.id);
+        const data = yield (0, productService_5.deleteProuduct)(req.params.id);
         res.send(data);
     }
     catch (err) {
