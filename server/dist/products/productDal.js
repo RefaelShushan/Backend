@@ -55,7 +55,7 @@ const readTopProductsDal = () => __awaiter(void 0, void 0, void 0, function* () 
         const findResult = yield collection
             .find({})
             .sort({ popularity: -1 })
-            .limit(2)
+            .limit(5)
             .toArray();
         console.log(findResult, "lll");
         console.log("kkk");
@@ -86,7 +86,7 @@ const updateItem = (id1) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("products");
     const { popularity } = yield (0, exports.readDataById)(id1);
-    const updateResult = yield collection.updateOne({ id: id1 }, { $set: { popularity: Number(popularity) + 1 } });
+    const updateResult = yield collection.updateOne({ id: Number(id1) }, { $set: { popularity: Number(popularity) + 1 } });
     return updateResult;
 });
 exports.updateItem = updateItem;

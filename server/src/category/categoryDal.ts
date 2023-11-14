@@ -48,7 +48,7 @@ export const updateItem = async (id1: string): Promise<any> => {
   );
   console.log(id1);
   const updateResult = await collection.updateOne(
-    { id: id1 },
+    { id: Number(id1) },
     { $set: { popularity: Number(popularity) + 1 } }
   );
   // console.log(updateResult,"kkkkkkkk")
@@ -58,7 +58,7 @@ export const updateItem = async (id1: string): Promise<any> => {
 export const readTopCategoryDal = async (): Promise<any[] | null> => {
   try {
     const db = client.db("kodecode");
-    const collection = db.collection("products");
+    const collection = db.collection("category");
     const findResult = await collection
       .find({})
       .sort({ popularity: -1 })

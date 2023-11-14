@@ -54,7 +54,7 @@ export const readTopProductsDal = async (): Promise<any[] | null> => {
     const findResult = await collection
       .find({})
       .sort({ popularity: -1 })
-      .limit(2)
+      .limit(5)
       .toArray();
 
     console.log(findResult, "lll");
@@ -86,7 +86,7 @@ export const updateItem = async (id1: string): Promise<any> => {
   const collection: any = db.collection("products");
   const { popularity } = await readDataById(id1);
   const updateResult = await collection.updateOne(
-    { id: id1 },
+    { id: Number(id1) },
     { $set: { popularity: Number(popularity) + 1 } }
   );
   return updateResult;

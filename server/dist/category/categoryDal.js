@@ -45,7 +45,7 @@ const updateItem = (id1) => __awaiter(void 0, void 0, void 0, function* () {
     const { popularity } = yield (0, exports.readDataById)(id1);
     console.log(popularity, "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
     console.log(id1);
-    const updateResult = yield collection.updateOne({ id: id1 }, { $set: { popularity: Number(popularity) + 1 } });
+    const updateResult = yield collection.updateOne({ id: Number(id1) }, { $set: { popularity: Number(popularity) + 1 } });
     // console.log(updateResult,"kkkkkkkk")
     // console.log(await collection.find({}))
     return updateResult;

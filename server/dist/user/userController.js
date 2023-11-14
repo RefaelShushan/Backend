@@ -17,19 +17,20 @@ const jwt_1 = require("../auth/jwt");
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = req.body;
+        const userByMail = yield (0, userService_1.getUserByEmailService)(user.email);
+        // if (userByMail) 
+        //   throw new Error("llll")
         user._id = (0, uuid_1.v1)();
         user.email = user.email;
         user.name = user.name;
         user.password = (0, bcrypt_1.generateUserPassword)(user.password);
-        user.isAdmin = user.isAdmin || false;
+        //   user.isAdmin = user.isAdmin || false;
         const data = yield (0, userService_1.registerService)(user);
-        if (data)
-            throw new Error("This user is already registered!");
         res.send(data);
     }
     catch (err) {
         console.error("at controllers.ts, line 44, func (newItem)");
-        res.status(400).json({ message: "Internal Server Error" });
+        res.status(400).json({ message: "This user is already registered", err });
     }
 });
 exports.register = register;
@@ -40,12 +41,14 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!users)
             throw new Error("Oops... Could not get the users from the Database");
         const userInDB = users.find((user) => userFromClient.email === user.email);
+        console.log(userInDB, "lllfsd", userInDB);
         if (!userInDB)
             throw new Error("The email or password is incorrect!");
         const userCopy = Object.assign({}, userInDB);
         if (!(0, bcrypt_1.comparePassword)(userFromClient.password, userCopy.password))
             throw new Error("The email or password is incorrect!");
         const token = (0, jwt_1.generateAuthToken)(userInDB);
+        res.send(token);
         return token;
     }
     catch (error) {
