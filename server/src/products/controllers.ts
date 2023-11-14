@@ -7,6 +7,7 @@ import { dataInterFace } from "./productDal";
 import {newItemOfService} from "./productService"
 import { updateItemOfService } from "./productService";
 import { deleteProuduct } from "./productService";
+import { getserviceByCategory } from "./productService";
 
 export const getAllItems = async (
   req: Request,
@@ -36,6 +37,22 @@ export const getItemById = async (
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
+export const getItemBycategory = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const data:dataInterFace|undefined = await getserviceByCategory(req.params.id);
+    if (data) {
+      res.send(data);
+    } else {
+      res.json("cant find the id");
+    }
+  } catch (err) {
+    console.error("at controllers.ts, line 35, func (getItemById)");
+    res.status(400).json({ message: "Internal Server Error" });
+  }
+};
 export const newItem = async (req: Request, res: Response): Promise<void> => {
   try {
     const data:string|any = await newItemOfService(req.body);
@@ -47,7 +64,7 @@ export const newItem = async (req: Request, res: Response): Promise<void> => {
 };
 export const updateItem=async(req:Request,res:Response):Promise<void>=>{
   try{
-    const data:string|any=await updateItemOfService(req.params.id,req.body)
+    const data:string|any=await updateItemOfService(req.params.id)
     res.send(data)
   }catch(err){
     console.error(err);

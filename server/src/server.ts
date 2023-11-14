@@ -21,7 +21,7 @@ import {client} from './data/mongo'
 import express from 'express';
 import cors from 'cors';
 import productrouter from './router/routerProducts';
-// import userRouter from './router/userRouter';
+import userRouter from './router/userRouter';
 import categoryRouter from './router/categoryRouter'
 
 const app = express();
@@ -29,9 +29,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Trip routes
 app.use('/api/products', productrouter);
-// app.use('/api/user', userRouter);
+app.use('/api/user', userRouter);
 app.use('/api/category',categoryRouter)
 
 app.listen(3000, () => {
