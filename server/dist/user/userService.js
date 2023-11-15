@@ -13,6 +13,7 @@ exports.getUserByEmailService = exports.loginService = exports.registerService =
 const userDal_1 = require("./userDal");
 const registerService = (item) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield (0, userDal_1.registerdal)(item);
+    // console.log(result,"result")
     return result;
 });
 exports.registerService = registerService;
@@ -32,7 +33,7 @@ exports.loginService = loginService;
 const getUserByEmailService = (id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data1 = yield (0, userDal_1.getUserByEmailDal)(id);
-        return true;
+        return data1;
     }
     catch (err) {
         console.error("at userService.js, line 14, func (getAllItems)");

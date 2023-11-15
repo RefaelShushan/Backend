@@ -13,18 +13,19 @@ export const register = async (req: Request, res: Response): Promise<void> => {
   try {
     const user: UserInterface = req.body;
     const userByMail = await getUserByEmailService(user.email);
-    // if (userByMail) 
-    //   throw new Error("llll")
+    if (userByMail) 
+      throw new Error("llll")
       user._id = uuid1();
       user.email = user.email;
       user.name = user.name;
+      user.cart=user.cart
       user.password = generateUserPassword(user.password);
     //   user.isAdmin = user.isAdmin || false;
       const data = await registerService(user);
       res.send(data);
   } catch (err) {
     console.error("at controllers.ts, line 44, func (newItem)");
-    res.status(400).json({ message: "This user is already registered" ,err});
+    res.status(400).json({ message: "This user is already registered" });
   }
 };
 

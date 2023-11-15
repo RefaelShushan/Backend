@@ -18,7 +18,7 @@ const registerdal = (item) => __awaiter(void 0, void 0, void 0, function* () {
     const oneDoc = yield collection.insertOne(item);
     //   console.log(collection);
     console.log(oneDoc);
-    return collection;
+    return oneDoc;
 });
 exports.registerdal = registerdal;
 const loginDal = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -33,8 +33,7 @@ const getUserByEmailDal = (id) => __awaiter(void 0, void 0, void 0, function* ()
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("users");
     // .toArray();
-    const findResult = yield collection.find({ email: id }).toArray();
-    console.log(findResult, "findResult");
-    return true;
+    const findResult = yield collection.findOne({ email: id });
+    return findResult;
 });
 exports.getUserByEmailDal = getUserByEmailDal;

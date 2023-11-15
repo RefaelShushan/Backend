@@ -5,6 +5,7 @@ export const registerService = async (
   item: UserInterface
 ): Promise<any | string> => {
   const result: any | string = await registerdal(item);
+  // console.log(result,"result")
   return result;
 };
 export const loginService = async (): Promise<UserInterface | unknown> => {
@@ -21,7 +22,7 @@ export const loginService = async (): Promise<UserInterface | unknown> => {
 export const getUserByEmailService= async (id: string): Promise<any> => {
     try {
       const data1 = await getUserByEmailDal(id);
-      return true;
+      return data1;
     } catch (err) {
       console.error("at userService.js, line 14, func (getAllItems)");
     }

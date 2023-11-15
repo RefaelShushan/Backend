@@ -4,6 +4,7 @@ interface UserInterface {
     name?:string;
     email: string;
     password: string;
+    cart:[]
   }
   
   export type LoginInterface = Pick<UserInterface, "email" | "password">;
