@@ -41,6 +41,29 @@ export const getUserByEmailDal = async (id: string): Promise<any | null> => {
     )
     return updateResult;
   };
+  export const getCartItemById = async (userId: string, itemId: string): Promise<any> => {
+    const db = client.db("kodecode");
+    const collection = db.collection("users");
+  
+    const user = await collection.findOne(
+      { email: userId },
+      { projection: { cart: { $elemMatch: { id: itemId } } } }
+    );
+  
+    return user?.cart[0]; 
+  };
+  export const getAllCartItems = async (userId: string): Promise<any[]> => {
+    const db = client.db("kodecode");
+    const collection = db.collection("users");
+  
+    const user = await collection.findOne(
+      { email: userId },
+      { projection: { _id: 0, cart: 1 } }
+    );
+  
+    return user?.cart || [];
+  };
+  
   export const deleteItemDal = async (id1: string,reqBody:any): Promise<any> => {
     const db = client.db("kodecode");
     const collection = db.collection("users");

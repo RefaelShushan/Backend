@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItemDal = exports.updateCartDal = exports.readDataById = exports.getUserByEmailDal = exports.loginDal = exports.registerdal = void 0;
+exports.deleteItemDal = exports.getAllCartItems = exports.getCartItemById = exports.updateCartDal = exports.readDataById = exports.getUserByEmailDal = exports.loginDal = exports.registerdal = void 0;
 const mongo_1 = require("../data/mongo");
 const registerdal = (item) => __awaiter(void 0, void 0, void 0, function* () {
     yield mongo_1.client.connect();
@@ -54,6 +54,20 @@ const updateCartDal = (id1, reqBody) => __awaiter(void 0, void 0, void 0, functi
     return updateResult;
 });
 exports.updateCartDal = updateCartDal;
+const getCartItemById = (userId, itemId) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongo_1.client.db("kodecode");
+    const collection = db.collection("users");
+    const user = yield collection.findOne({ email: userId }, { projection: { cart: { $elemMatch: { id: itemId } } } });
+    return user === null || user === void 0 ? void 0 : user.cart[0];
+});
+exports.getCartItemById = getCartItemById;
+const getAllCartItems = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongo_1.client.db("kodecode");
+    const collection = db.collection("users");
+    const user = yield collection.findOne({ email: userId }, { projection: { _id: 0, cart: 1 } });
+    return (user === null || user === void 0 ? void 0 : user.cart) || [];
+});
+exports.getAllCartItems = getAllCartItems;
 const deleteItemDal = (id1, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("users");

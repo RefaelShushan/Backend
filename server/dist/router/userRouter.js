@@ -15,5 +15,6 @@ router.post('/register', userController_1.register);
 router.post('/login', userController_1.login);
 // cart 
 router.put('/update/:id', userController_1.updateCart);
+router.get('/cartarr/:id', userController_1.getAllCartItems);
 router.put('/delete/:id', userController_1.deleteItem);
 exports.default = router;

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem = exports.updateCart = exports.login = exports.register = void 0;
+exports.deleteItem = exports.getAllCartItems = exports.updateCart = exports.login = exports.register = void 0;
 const uuid_1 = require("uuid");
 const bcrypt_1 = require("../bcrypt/bcrypt");
 const userService_1 = require("./userService");
@@ -71,6 +71,17 @@ const updateCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.updateCart = updateCart;
+const getAllCartItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, userService_1.getAllCartItemsService)(req.params.id);
+        res.send(data);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(400).json({ message: "Internal Server Error" });
+    }
+});
+exports.getAllCartItems = getAllCartItems;
 const deleteItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, userService_1.deleteItemService)(req.params.id, req.body);
