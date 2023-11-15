@@ -33,13 +33,26 @@ export const getUserByEmailDal = async (id: string): Promise<any | null> => {
   export const updateCartDal = async (id1: string,reqBody:any): Promise<any> => {
     const db = client.db("kodecode");
     const reqBodyString=reqBody.id
-    const collection: any = db.collection("user");
+    const collection = db.collection("users");
     const product = await readDataById(reqBodyString);
-    const newObj = { key: 'value' }; 
-    const updateResult = await collection.insertOne(
+    const updateResult = await collection.updateOne(
       { email: id1 },
       { $push: { cart:product }}
     )
-    console.log(updateResult)
+    return updateResult;
+  };
+  export const deleteItemDal = async (id1: string,reqBody:any): Promise<any> => {
+    const db = client.db("kodecode");
+    const collection = db.collection("users");
+    const user=await collection.findOne({email:id1})
+    const reqBodyString=reqBody.id
+    let arrayOfCart=[]
+    arrayOfCart=user.cart
+    const filteredArray = arrayOfCart.filter((obj:any) => obj.id !== reqBodyString);
+    const updateResult = await collection.updateOne(
+      { email: id1 },
+      // { $set: { cart:[filteredArray] }}
+      { $pull: { cart: { id: Number(reqBodyString) } } }
+    )
     return updateResult;
   };

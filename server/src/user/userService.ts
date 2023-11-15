@@ -1,5 +1,5 @@
 import UserInterface, { LoginInterface } from "../models/user";
-import { registerdal, loginDal ,getUserByEmailDal,updateCartDal} from "./userDal";
+import { registerdal, loginDal ,getUserByEmailDal,updateCartDal,deleteItemDal} from "./userDal";
 
 export const registerService = async (
   item: UserInterface
@@ -29,8 +29,10 @@ export const getUserByEmailService= async (id: string): Promise<any> => {
     return console.error();
   };
   export const updateCartService=async(id:string,reqBody:any):Promise<string|undefined>=>{
-    let numberid=Number(id)
     let result:string|undefined=await updateCartDal(id,reqBody)
-    console.log("result")
+    return result
+  }
+  export const deleteItemService=async(id:string,reqBody:any):Promise<string|undefined>=>{
+    let result:string|undefined=await deleteItemDal(id,reqBody)
     return result
   }

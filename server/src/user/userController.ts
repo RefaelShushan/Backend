@@ -6,7 +6,7 @@ type UserResult = Promise<UserInterface | null>;
 import {
   registerService,
   loginService,
-  getUserByEmailService,updateCartService
+  getUserByEmailService,updateCartService,deleteItemService
 } from "./userService";
 import { generateAuthToken } from "../auth/jwt";
 export const register = async (req: Request, res: Response): Promise<void> => {
@@ -56,6 +56,16 @@ export const login = async (req: Request, res: Response) => {
 export const updateCart=async(req:Request,res:Response):Promise<void>=>{
   try{
     const data:string|any=await updateCartService(req.params.id,req.body)
+    console.log(req.body)
+    res.send(data)
+  }catch(err){
+    console.error(err);
+    res.status(400).json({ message: "Internal Server Error" });
+  }
+}
+export const deleteItem=async(req:Request,res:Response):Promise<void>=>{
+  try{
+    const data:string|any=await deleteItemService(req.params.id,req.body)
     console.log(req.body)
     res.send(data)
   }catch(err){

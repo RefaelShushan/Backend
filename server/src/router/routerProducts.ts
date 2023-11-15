@@ -17,7 +17,7 @@ router.get('/spesific/:id', getItemById);
 router.post('/', newItem);
 
 router.put('/popularity/:id', updateItem);
-
+// כמות
 router.get('/contyty',updateAmount)
 
 router.delete('/:id', deleteProuduct1);
