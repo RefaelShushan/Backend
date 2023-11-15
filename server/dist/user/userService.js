@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUserByEmailService = exports.loginService = exports.registerService = void 0;
+exports.updateCartService = exports.getUserByEmailService = exports.loginService = exports.registerService = void 0;
 const userDal_1 = require("./userDal");
 const registerService = (item) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield (0, userDal_1.registerdal)(item);
@@ -41,3 +41,10 @@ const getUserByEmailService = (id) => __awaiter(void 0, void 0, void 0, function
     return console.error();
 });
 exports.getUserByEmailService = getUserByEmailService;
+const updateCartService = (id, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
+    let numberid = Number(id);
+    let result = yield (0, userDal_1.updateCartDal)(id, reqBody);
+    console.log("result");
+    return result;
+});
+exports.updateCartService = updateCartService;

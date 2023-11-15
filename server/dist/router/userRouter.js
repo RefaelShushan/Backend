@@ -13,4 +13,5 @@ const router = express_1.default.Router();
 router.post('/register', userController_1.register);
 // User login route
 router.post('/login', userController_1.login);
+router.put('/:id', userController_1.updateCart);
 exports.default = router;

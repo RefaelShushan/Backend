@@ -23,3 +23,23 @@ export const getUserByEmailDal = async (id: string): Promise<any | null> => {
     const findResult = await collection.findOne({ email: id })
     return findResult;
   };
+  export const readDataById = async (id: string): Promise<any | null> => {
+    const db = client.db("kodecode");
+    const collection = db.collection("products");
+    const findResult = await collection.findOne({ id: Number(id) });
+    console.log(findResult);
+    return findResult;
+  };
+  export const updateCartDal = async (id1: string,reqBody:any): Promise<any> => {
+    const db = client.db("kodecode");
+    const reqBodyString=reqBody.id
+    const collection: any = db.collection("user");
+    const product = await readDataById(reqBodyString);
+    const newObj = { key: 'value' }; 
+    const updateResult = await collection.updateOne(
+      { "email": id1 },
+      { $push: { cart: {key: 'value' }}}
+    )
+    console.log(updateResult)
+    return updateResult;
+  };

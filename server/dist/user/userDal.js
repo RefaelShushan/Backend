@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getUserByEmailDal = exports.loginDal = exports.registerdal = void 0;
+exports.updateCartDal = exports.readDataById = exports.getUserByEmailDal = exports.loginDal = exports.registerdal = void 0;
 const mongo_1 = require("../data/mongo");
 const registerdal = (item) => __awaiter(void 0, void 0, void 0, function* () {
     yield mongo_1.client.connect();
@@ -37,3 +37,22 @@ const getUserByEmailDal = (id) => __awaiter(void 0, void 0, void 0, function* ()
     return findResult;
 });
 exports.getUserByEmailDal = getUserByEmailDal;
+const readDataById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongo_1.client.db("kodecode");
+    const collection = db.collection("products");
+    const findResult = yield collection.findOne({ id: Number(id) });
+    console.log(findResult);
+    return findResult;
+});
+exports.readDataById = readDataById;
+const updateCartDal = (id1, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongo_1.client.db("kodecode");
+    const reqBodyString = reqBody.id;
+    const collection = db.collection("user");
+    const product = yield (0, exports.readDataById)(reqBodyString);
+    const newObj = { key: 'value' };
+    const updateResult = yield collection.updateOne({ "email": id1 }, { $push: { cart: { key: 'value' } } });
+    console.log(updateResult);
+    return updateResult;
+});
+exports.updateCartDal = updateCartDal;
