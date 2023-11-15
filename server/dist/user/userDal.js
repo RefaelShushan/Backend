@@ -51,7 +51,7 @@ const updateCartDal = (id1, reqBody) => __awaiter(void 0, void 0, void 0, functi
     const collection = db.collection("user");
     const product = yield (0, exports.readDataById)(reqBodyString);
     const newObj = { key: 'value' };
-    const updateResult = yield collection.updateOne({ "email": id1 }, { $push: { cart: { key: 'value' } } });
+    const updateResult = yield collection.insertOne({ email: id1 }, { $push: { cart: product } });
     console.log(updateResult);
     return updateResult;
 });

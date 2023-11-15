@@ -36,9 +36,9 @@ export const getUserByEmailDal = async (id: string): Promise<any | null> => {
     const collection: any = db.collection("user");
     const product = await readDataById(reqBodyString);
     const newObj = { key: 'value' }; 
-    const updateResult = await collection.updateOne(
-      { "email": id1 },
-      { $push: { cart: {key: 'value' }}}
+    const updateResult = await collection.insertOne(
+      { email: id1 },
+      { $push: { cart:product }}
     )
     console.log(updateResult)
     return updateResult;
