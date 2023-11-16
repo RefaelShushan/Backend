@@ -1,6 +1,4 @@
 export {};
-
-// const client = new MongoClient('mongodb+srv://yehuda9955:F0jiS7OCoKEb5kJM@cluster0.ijcfz0y.mongodb.net/test?retryWrites=true&w=majority');
 import { client } from "../data/mongo";
 // const DATA = "src/data.json";
 // const DATA="./ts/data.json"
@@ -14,8 +12,7 @@ export interface dataInterFace {
   screen_size: number;
   image_link: string;
 }
-// dataInterFace[]
-// mongo
+
 export const readData = async (): Promise<any> => {
   const db = client.db("kodecode");
   const collection = db.collection("products");
@@ -56,31 +53,12 @@ export const readTopProductsDal = async (): Promise<any[] | null> => {
       .sort({ popularity: -1 })
       .limit(5)
       .toArray();
-
-    console.log(findResult, "lll");
-    console.log("kkk");
-
     return findResult;
   } catch (error) {
     console.error("Error in readTopProducts:", error);
     return null;
   }
 };
-// export const updateItem=async(id:number,body:dataInterFace):Promise<any>=>{
-//   const db = client.db("kodecode");
-//   const collection:any = db.collection("products");
-//   console.log(id)
-//   const updateResult = await collection.updateOne(
-//     { id: id },
-//     { $set: { id:id,
-//     name:body.name,
-//     price:body.price,
-//     category:body.category,
-//     popularity:body.popularity,
-//  } }
-//     );
-//     return updateResult;
-// }
 export const updateItem = async (id1: string): Promise<any> => {
   const db = client.db("kodecode");
   const collection: any = db.collection("products");
@@ -99,9 +77,12 @@ export const deleteItem = async (id: any): Promise<any> => {
   console.log(id);
   return deleteResult;
 };
-export const updateamountDal = async (id1: string,reqBody:any): Promise<any> => {
+export const updateamountDal = async (
+  id1: string,
+  reqBody: any
+): Promise<any> => {
   const db = client.db("kodecode");
-  const jsonResult=reqBody.id
+  const jsonResult = reqBody.id;
   const collection: any = db.collection("products");
   const { amount } = await readDataById(id1);
   const updateResult = await collection.updateOne(

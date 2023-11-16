@@ -69,7 +69,6 @@ const newItemOfService = (item) => __awaiter(void 0, void 0, void 0, function* (
 exports.newItemOfService = newItemOfService;
 // mongo
 const updateItemOfService = (id, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
-    let numberid = Number(id);
     let result = yield (0, productDal_1.updateItem)(id);
     return result;
 });
@@ -81,7 +80,6 @@ const deleteProuduct = (id) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.deleteProuduct = deleteProuduct;
 const updateAmountOfService = (id, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
-    let numberid = Number(id);
     let result = yield (0, productDal_1.updateamountDal)(id, reqBody);
     return result;
 });

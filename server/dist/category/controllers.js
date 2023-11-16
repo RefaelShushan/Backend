@@ -34,7 +34,7 @@ const getItemById = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         }
         else {
             res.json("cant find the id by id ");
-            console.log(data, 'hfsfsf');
+            console.log(data, "hfsfsf");
         }
     }
     catch (err) {

@@ -65,10 +65,10 @@ export const readTopProducts = async (
 ): Promise<void> => {
   try {
     const data = await readTopProductsService();
-    console.log("elchi1")
+    console.log("elchi1");
     res.send(data);
   } catch (err) {
-    console.log("elchi")
+    console.log("elchi");
     console.error("at controllers.ts, line 6, func (getallItems)");
     res.status(400).json({ message: "Internal Server Error" });
   }
@@ -82,15 +82,21 @@ export const newItem = async (req: Request, res: Response): Promise<void> => {
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
-export const updateItem=async(req:Request,res:Response):Promise<void>=>{
-  try{
-    const data:string|any=await updateItemOfService(req.params.id,req.body)
-    res.send(data)
-  }catch(err){
+export const updateItem = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const data: string | any = await updateItemOfService(
+      req.params.id,
+      req.body
+    );
+    res.send(data);
+  } catch (err) {
     console.error(err);
     res.status(400).json({ message: "Internal Server Error" });
   }
-}
+};
 export const deleteProuduct1 = async (
   req: Request,
   res: Response
@@ -103,12 +109,18 @@ export const deleteProuduct1 = async (
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
-export const updateAmount=async(req:Request,res:Response):Promise<void>=>{
-  try{
-    const data:string|any=await updateAmountOfService(req.params.id,req.body)
-    res.send(data)
-  }catch(err){
+export const updateAmount = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const data: string | any = await updateAmountOfService(
+      req.params.id,
+      req.body
+    );
+    res.send(data);
+  } catch (err) {
     console.error(err);
     res.status(400).json({ message: "Internal Server Error" });
   }
-}
+};

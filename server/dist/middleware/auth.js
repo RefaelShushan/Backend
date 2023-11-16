@@ -1,14 +1,11 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.requireAuth = exports.tokenArray = void 0;
-exports.tokenArray = ['test-token'];
-const requireAuth = (req, res, next) => {
-    const authToken = req.headers['authorization'];
-    if (!authToken)
-        return res.status(401).json({ error: 'Unauthorized' });
-    if (!exports.tokenArray.includes(authToken)) {
-        return res.status(401).json({ error: 'Unauthorized' });
-    }
-    next();
-};
-exports.requireAuth = requireAuth;
+// import { Request, Response, NextFunction } from 'express';
+// export const tokenArray: string[] = ['test-token'];
+// export const requireAuth = (req: Request, res: Response, next: NextFunction) => {
+//   const authToken = req.headers['authorization'];
+//   if (!authToken) return res.status(401).json({ error: 'Unauthorized' });
+//   if (!tokenArray.includes(authToken)) {
+//     return res.status(401).json({ error: 'Unauthorized' });
+//   }
+//   next();
+// };

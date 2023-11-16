@@ -1,5 +1,12 @@
 import UserInterface, { LoginInterface } from "../models/user";
-import { registerdal, loginDal ,getUserByEmailDal,updateCartDal,deleteItemDal,getAllCartItems} from "./userDal";
+import {
+  registerdal,
+  loginDal,
+  getUserByEmailDal,
+  updateCartDal,
+  deleteItemDal,
+  getAllCartItems,
+} from "./userDal";
 
 export const registerService = async (
   item: UserInterface
@@ -19,24 +26,32 @@ export const loginService = async (): Promise<UserInterface | unknown> => {
   }
   return console.error();
 };
-export const getUserByEmailService= async (id: string): Promise<any> => {
-    try {
-      const data1 = await getUserByEmailDal(id);
-      return data1;
-    } catch (err) {
-      console.error("at userService.js, line 14, func (getAllItems)");
-    }
-    return console.error();
-  };
-  export const updateCartService=async(id:string,reqBody:any):Promise<string|undefined>=>{
-    let result:string|undefined=await updateCartDal(id,reqBody)
-    return result
+export const getUserByEmailService = async (id: string): Promise<any> => {
+  try {
+    const data1 = await getUserByEmailDal(id);
+    return data1;
+  } catch (err) {
+    console.error("at userService.js, line 14, func (getAllItems)");
   }
-  export const getAllCartItemsService=async(id:string):Promise<any[]|undefined>=>{
-    let result: any[] | undefined=await getAllCartItems(id)
-    return result
-  }
-  export const deleteItemService=async(id:string,reqBody:any):Promise<string|undefined>=>{
-    let result:string|undefined=await deleteItemDal(id,reqBody)
-    return result
-  }
+  return console.error();
+};
+export const updateCartService = async (
+  id: string,
+  reqBody: any
+): Promise<string | undefined> => {
+  let result: string | undefined = await updateCartDal(id, reqBody);
+  return result;
+};
+export const getAllCartItemsService = async (
+  id: string
+): Promise<any[] | undefined> => {
+  let result: any[] | undefined = await getAllCartItems(id);
+  return result;
+};
+export const deleteItemService = async (
+  id: string,
+  reqBody: any
+): Promise<string | undefined> => {
+  let result: string | undefined = await deleteItemDal(id, reqBody);
+  return result;
+};

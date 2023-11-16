@@ -22,12 +22,12 @@ export const getItemById = async (
   res: Response
 ): Promise<void> => {
   try {
-    const data= await getItemByIdService(req.params.id);
+    const data = await getItemByIdService(req.params.id);
     if (data) {
       res.send(data);
     } else {
       res.json("cant find the id by id ");
-      console.log(data,'hfsfsf')
+      console.log(data, "hfsfsf");
     }
   } catch (err) {
     console.error("at controllers.ts, line 35, func (getItemById)");
@@ -40,21 +40,23 @@ export const readTopCategory = async (
 ): Promise<void> => {
   try {
     const data = await readTopCategoryService();
-    console.log("elchi1")
+    console.log("elchi1");
     res.send(data);
   } catch (err) {
-    console.log("elchi")
+    console.log("elchi");
     console.error("at controllers.ts, line 6, func (getallItems)");
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
-export const updateItem=async(req:Request,res:Response):Promise<void>=>{
-  try{
-    const data:string|any=await updateItemOfService(req.params.id)
-    res.send(data)
-  }catch(err){
+export const updateItem = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const data: string | any = await updateItemOfService(req.params.id);
+    res.send(data);
+  } catch (err) {
     console.error(err);
     res.status(400).json({ message: "Internal Server Error" });
   }
-}
-
+};

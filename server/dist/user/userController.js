@@ -43,7 +43,6 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!users)
             throw new Error("Oops... Could not get the users from the Database");
         const userInDB = users.find((user) => userFromClient.email === user.email);
-        console.log(userInDB, "lllfsd", userInDB);
         if (!userInDB)
             throw new Error("The email or password is incorrect!");
         const userCopy = Object.assign({}, userInDB);

@@ -1,6 +1,5 @@
 
 import express from 'express';
-// import { requireAuth } from '../middleware/auth';
 import {
     newItem ,getAllItems,getItemById,updateItem,deleteProuduct1,getItemBycategory,readTopProducts,updateAmount
 } from '../products/controllers'

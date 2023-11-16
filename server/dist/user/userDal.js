@@ -45,13 +45,31 @@ const readDataById = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return findResult;
 });
 exports.readDataById = readDataById;
+// export const updateCartDal = async (id1: string,reqBody:any): Promise<any> => {
+//   const db = client.db("kodecode");
+//   const reqBodyString=reqBody.id
+//   const collection = db.collection("users");
+//   const product = await readDataById(reqBodyString);
+//   const updateResult = await collection.updateOne(
+//     { email: id1 },
+//     { $push: { cart:product }}
+//   )
+//   return updateResult;
+// };
 const updateCartDal = (id1, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const reqBodyString = reqBody.id;
     const collection = db.collection("users");
     const product = yield (0, exports.readDataById)(reqBodyString);
-    const updateResult = yield collection.updateOne({ email: id1 }, { $push: { cart: product } });
-    return updateResult;
+    const user = yield collection.findOne({ email: id1 });
+    const isProductInCart = user.cart.some((cartProduct) => cartProduct.id === product.id);
+    if (!isProductInCart) {
+        const updateResult = yield collection.updateOne({ email: id1 }, { $push: { cart: product } });
+        return updateResult;
+    }
+    else {
+        return { message: "Product is already in the cart" };
+    }
 });
 exports.updateCartDal = updateCartDal;
 const getCartItemById = (userId, itemId) => __awaiter(void 0, void 0, void 0, function* () {

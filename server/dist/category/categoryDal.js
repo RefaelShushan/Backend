@@ -10,10 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteItem = exports.readTopCategoryDal = exports.updateItem = exports.writeData = exports.readDataById = exports.readData = void 0;
-// const client = new MongoClient('mongodb+srv://yehuda9955:F0jiS7OCoKEb5kJM@cluster0.ijcfz0y.mongodb.net/test?retryWrites=true&w=majority');
 const mongo_1 = require("../data/mongo");
-// dataInterFace[]
-// mongo
 const readData = () => __awaiter(void 0, void 0, void 0, function* () {
     const db = mongo_1.client.db("kodecode");
     const collection = db.collection("category");

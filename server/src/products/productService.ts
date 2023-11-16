@@ -8,7 +8,7 @@ import {
   readDataById,
   readTopProductsDal,
   readDataByCategory,
-  updateamountDal
+  updateamountDal,
 } from "./productDal";
 import { dataInterFace } from "./productDal";
 export const getAllItemsService = async (): Promise<
@@ -26,8 +26,8 @@ export const getAllItemsService = async (): Promise<
 };
 export const getItemByIdService = async (id: string): Promise<any> => {
   try {
-    const data1= await readDataById(id);
-    console.log(data1,"jgdua");
+    const data1 = await readDataById(id);
+    console.log(data1, "jgdua");
     return data1;
   } catch (err) {
     console.error("at userService.js, line 14, func (getAllItems)");
@@ -63,11 +63,13 @@ export const newItemOfService = async (
   return writeData;
 };
 // mongo
-export const updateItemOfService=async(id:string,reqBody:any):Promise<string|undefined>=>{
-  let numberid=Number(id)
-  let result:string|undefined=await updateItem(id)
-  return result
-}
+export const updateItemOfService = async (
+  id: string,
+  reqBody: any
+): Promise<string | undefined> => {
+  let result: string | undefined = await updateItem(id);
+  return result;
+};
 export const deleteProuduct = async (
   id: string
 ): Promise<string | undefined> => {
@@ -75,8 +77,10 @@ export const deleteProuduct = async (
   let result: string | undefined = await deleteItem(numberid);
   return result;
 };
-export const updateAmountOfService=async(id:string,reqBody:any):Promise<string|undefined>=>{
-  let numberid=Number(id)
-  let result:string|undefined=await updateamountDal(id,reqBody)
-  return result
-}
+export const updateAmountOfService = async (
+  id: string,
+  reqBody: any
+): Promise<string | undefined> => {
+  let result: string | undefined = await updateamountDal(id, reqBody);
+  return result;
+};

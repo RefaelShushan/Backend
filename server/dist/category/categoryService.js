@@ -10,8 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProuduct = exports.updateItemOfService = exports.readTopCategoryService = exports.newItemOfService = exports.getItemByIdService = exports.getAllItemsService = void 0;
-// export {};
-// const userDal = require("./userDal");
 const categoryDal_1 = require("./categoryDal");
 const getAllItemsService = () => __awaiter(void 0, void 0, void 0, function* () {
     // get all items

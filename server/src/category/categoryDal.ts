@@ -1,10 +1,5 @@
 export {};
-
-// const client = new MongoClient('mongodb+srv://yehuda9955:F0jiS7OCoKEb5kJM@cluster0.ijcfz0y.mongodb.net/test?retryWrites=true&w=majority');
 import { client } from "../data/mongo";
-// const DATA = "src/data.json";
-// const DATA="./ts/data.json"
-// const jsonfile = require("jsonfile");
 export interface dataInterFace {
   name: string;
   category: string;
@@ -14,8 +9,6 @@ export interface dataInterFace {
   screen_size: number;
   image_link: string;
 }
-// dataInterFace[]
-// mongo
 export const readData = async (): Promise<any> => {
   const db = client.db("kodecode");
   const collection = db.collection("category");
