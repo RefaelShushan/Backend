@@ -3,9 +3,10 @@ WORKDIR /app
 
 COPY package*.json tsconfig.json ./
 RUN npm install
+npm install tsc 
 
 COPY ./src ./src
-npm install tsc 
+
 RUN npx tsc
 
 FROM node:latest as artifact
