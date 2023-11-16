@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteItem = exports.updateItem = exports.readTopProductsDal = exports.writeData = exports.readDataByCategory = exports.readDataById = exports.readData = void 0;
+exports.updateamountDal = exports.deleteItem = exports.updateItem = exports.readTopProductsDal = exports.writeData = exports.readDataByCategory = exports.readDataById = exports.readData = void 0;
 // const client = new MongoClient('mongodb+srv://yehuda9955:F0jiS7OCoKEb5kJM@cluster0.ijcfz0y.mongodb.net/test?retryWrites=true&w=majority');
 const mongo_1 = require("../data/mongo");
 // dataInterFace[]
@@ -99,3 +99,12 @@ const deleteItem = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return deleteResult;
 });
 exports.deleteItem = deleteItem;
+const updateamountDal = (id1, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongo_1.client.db("kodecode");
+    const jsonResult = reqBody.id;
+    const collection = db.collection("products");
+    const { amount } = yield (0, exports.readDataById)(id1);
+    const updateResult = yield collection.updateOne({ id: Number(id1) }, { $set: { popularity: Number(amount) - Number(jsonResult) } });
+    return updateResult;
+});
+exports.updateamountDal = updateamountDal;

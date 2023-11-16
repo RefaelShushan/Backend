@@ -54,7 +54,7 @@ exports.updateItem = updateItem;
 const readTopCategoryDal = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const db = mongo_1.client.db("kodecode");
-        const collection = db.collection("products");
+        const collection = db.collection("category");
         const findResult = yield collection
             .find({})
             .sort({ popularity: -1 })

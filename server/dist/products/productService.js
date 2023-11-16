@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProuduct = exports.updateItemOfService = exports.newItemOfService = exports.readTopProductsService = exports.getserviceByCategory = exports.getItemByIdService = exports.getAllItemsService = void 0;
+exports.updateAmountOfService = exports.deleteProuduct = exports.updateItemOfService = exports.newItemOfService = exports.readTopProductsService = exports.getserviceByCategory = exports.getItemByIdService = exports.getAllItemsService = void 0;
 // export {};
 // const userDal = require("./userDal");
 const productDal_1 = require("./productDal");
@@ -68,7 +68,7 @@ const newItemOfService = (item) => __awaiter(void 0, void 0, void 0, function* (
 });
 exports.newItemOfService = newItemOfService;
 // mongo
-const updateItemOfService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+const updateItemOfService = (id, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
     let numberid = Number(id);
     let result = yield (0, productDal_1.updateItem)(id);
     return result;
@@ -80,3 +80,9 @@ const deleteProuduct = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 exports.deleteProuduct = deleteProuduct;
+const updateAmountOfService = (id, reqBody) => __awaiter(void 0, void 0, void 0, function* () {
+    let numberid = Number(id);
+    let result = yield (0, productDal_1.updateamountDal)(id, reqBody);
+    return result;
+});
+exports.updateAmountOfService = updateAmountOfService;

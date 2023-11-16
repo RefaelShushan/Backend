@@ -2,7 +2,7 @@
 import express from 'express';
 // import { requireAuth } from '../middleware/auth';
 import {
-    newItem ,getAllItems,getItemById,updateItem,deleteProuduct1,getItemBycategory,readTopProducts
+    newItem ,getAllItems,getItemById,updateItem,deleteProuduct1,getItemBycategory,readTopProducts,updateAmount
 } from '../products/controllers'
 
 const router = express.Router();
@@ -16,7 +16,9 @@ router.get('/spesific/:id', getItemById);
 
 router.post('/', newItem);
 
-router.put('/:id', updateItem);
+router.put('/popularity/:id', updateItem);
+// כמות
+router.get('/contyty',updateAmount)
 
 router.delete('/:id', deleteProuduct1);
 

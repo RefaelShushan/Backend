@@ -9,6 +9,7 @@ import { updateItemOfService } from "./productService";
 import { deleteProuduct } from "./productService";
 import { getserviceByCategory } from "./productService";
 import { readTopProductsService } from "./productService";
+import { updateAmountOfService } from "./productService";
 
 export const getAllItems = async (
   req: Request,
@@ -83,7 +84,7 @@ export const newItem = async (req: Request, res: Response): Promise<void> => {
 };
 export const updateItem=async(req:Request,res:Response):Promise<void>=>{
   try{
-    const data:string|any=await updateItemOfService(req.params.id)
+    const data:string|any=await updateItemOfService(req.params.id,req.body)
     res.send(data)
   }catch(err){
     console.error(err);
@@ -102,3 +103,12 @@ export const deleteProuduct1 = async (
     res.status(400).json({ message: "Internal Server Error" });
   }
 };
+export const updateAmount=async(req:Request,res:Response):Promise<void>=>{
+  try{
+    const data:string|any=await updateAmountOfService(req.params.id,req.body)
+    res.send(data)
+  }catch(err){
+    console.error(err);
+    res.status(400).json({ message: "Internal Server Error" });
+  }
+}

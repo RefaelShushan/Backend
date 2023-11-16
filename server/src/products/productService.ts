@@ -8,6 +8,7 @@ import {
   readDataById,
   readTopProductsDal,
   readDataByCategory,
+  updateamountDal
 } from "./productDal";
 import { dataInterFace } from "./productDal";
 export const getAllItemsService = async (): Promise<
@@ -62,7 +63,7 @@ export const newItemOfService = async (
   return writeData;
 };
 // mongo
-export const updateItemOfService=async(id:string):Promise<string|undefined>=>{
+export const updateItemOfService=async(id:string,reqBody:any):Promise<string|undefined>=>{
   let numberid=Number(id)
   let result:string|undefined=await updateItem(id)
   return result
@@ -74,3 +75,8 @@ export const deleteProuduct = async (
   let result: string | undefined = await deleteItem(numberid);
   return result;
 };
+export const updateAmountOfService=async(id:string,reqBody:any):Promise<string|undefined>=>{
+  let numberid=Number(id)
+  let result:string|undefined=await updateamountDal(id,reqBody)
+  return result
+}

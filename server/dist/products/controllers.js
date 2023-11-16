@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProuduct1 = exports.updateItem = exports.newItem = exports.readTopProducts = exports.getItemBycategory = exports.getItemById = exports.getAllItems = void 0;
+exports.updateAmount = exports.deleteProuduct1 = exports.updateItem = exports.newItem = exports.readTopProducts = exports.getItemBycategory = exports.getItemById = exports.getAllItems = void 0;
 const userService = require("./userService");
 const productService_1 = require("./productService");
 const productService_2 = require("./productService");
@@ -18,6 +18,7 @@ const productService_4 = require("./productService");
 const productService_5 = require("./productService");
 const productService_6 = require("./productService");
 const productService_7 = require("./productService");
+const productService_8 = require("./productService");
 const getAllItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, productService_1.getAllItemsService)();
@@ -87,7 +88,7 @@ const newItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.newItem = newItem;
 const updateItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield (0, productService_4.updateItemOfService)(req.params.id);
+        const data = yield (0, productService_4.updateItemOfService)(req.params.id, req.body);
         res.send(data);
     }
     catch (err) {
@@ -107,3 +108,14 @@ const deleteProuduct1 = (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.deleteProuduct1 = deleteProuduct1;
+const updateAmount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, productService_8.updateAmountOfService)(req.params.id, req.body);
+        res.send(data);
+    }
+    catch (err) {
+        console.error(err);
+        res.status(400).json({ message: "Internal Server Error" });
+    }
+});
+exports.updateAmount = updateAmount;

@@ -99,3 +99,14 @@ export const deleteItem = async (id: any): Promise<any> => {
   console.log(id);
   return deleteResult;
 };
+export const updateamountDal = async (id1: string,reqBody:any): Promise<any> => {
+  const db = client.db("kodecode");
+  const jsonResult=reqBody.id
+  const collection: any = db.collection("products");
+  const { amount } = await readDataById(id1);
+  const updateResult = await collection.updateOne(
+    { id: Number(id1) },
+    { $set: { popularity: Number(amount) - Number(jsonResult) } }
+  );
+  return updateResult;
+};
