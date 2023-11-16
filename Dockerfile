@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY package*.json tsconfig.json ./
 RUN npm install
-npm install tsc 
+Run npm install tsc 
 
 COPY ./src ./src
 
