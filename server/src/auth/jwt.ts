@@ -7,9 +7,12 @@ import config from "config";
 const KEY = config.get<string | null>("JWT_KEY");
 
 export const generateAuthToken = (user: UserInterface) => {
-  const { _id, isAdmin } = user;
+  const { _id, isAdmin, email } = user;
   if (!KEY) throw new Error("no secret key provided!");
-  const token = jwt.sign({ _id, isAdmin }, KEY);
+
+  const expiresIn = 60 * 60 * 24 * 7;
+
+  const token = jwt.sign({ _id, isAdmin, email }, KEY, { expiresIn });
   return token;
 };
 

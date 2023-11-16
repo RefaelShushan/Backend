@@ -9,10 +9,11 @@ const config_1 = __importDefault(require("config"));
 // import { handleError } from "../../utils/handleErrors";
 const KEY = config_1.default.get("JWT_KEY");
 const generateAuthToken = (user) => {
-    const { _id, isAdmin } = user;
+    const { _id, isAdmin, email } = user;
     if (!KEY)
         throw new Error("no secret key provided!");
-    const token = jsonwebtoken_1.default.sign({ _id, isAdmin }, KEY);
+    const expiresIn = 60 * 60 * 24 * 7;
+    const token = jsonwebtoken_1.default.sign({ _id, isAdmin, email }, KEY, { expiresIn });
     return token;
 };
 exports.generateAuthToken = generateAuthToken;

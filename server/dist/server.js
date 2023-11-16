@@ -1,26 +1,8 @@
 "use strict";
-// import cors from "cors";
-// import {client} from './data/mongo'
-// const express = require("express");
-// const app = express();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// const path = require("path");
-// const router = require("./routerProducts");
-// app.use(cors());
-// app.use(express.json());
-// app.use(express.text());
-// app.use(router);
-// app.use('/api/products', );
-// app.use('/api/auth', authRoutes);
-// const PORT = 8200;
-// app.listen(PORT, () => {
-//   console.log(`server is running on port ${PORT}`);
-//   client.connect();
-// });
-// src/server.ts
 const mongo_1 = require("./data/mongo");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));

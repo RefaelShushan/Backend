@@ -49,8 +49,8 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!(0, bcrypt_1.comparePassword)(userFromClient.password, userCopy.password))
             throw new Error("The email or password is incorrect!");
         const token = (0, jwt_1.generateAuthToken)(userInDB);
-        res.send(userFromClient.email);
-        // res.send(token)
+        // res.send(userFromClient.email);
+        res.send(token);
         return token;
     }
     catch (error) {
