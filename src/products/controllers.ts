@@ -1,6 +1,6 @@
 export {};
 import { Response, Request } from "express";
-const userService = require("./userService");
+// const userService = require("./userService");
 import { getAllItemsService } from "./productService";
 import { getItemByIdService } from "./productService";
 import { dataInterFace } from "./productDal";
