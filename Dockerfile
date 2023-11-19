@@ -1,35 +1,18 @@
-FROM node:lts-slim AS buildStage
+FROM node:latest AS buildStage
 WORKDIR /app
-
-# Debugging: List files in the current directory
-RUN ls -al
 
 COPY package*.json tsconfig.json ./
 RUN npm install
-
-# Debugging: List files in the current directory after npm install
-RUN ls -al
-
-# Debugging: List files in the /app directory
-RUN ls -al /app
-
-# Debugging: List files in the /app/src directory
-RUN ls -al /app/src
 
 COPY ./src ./src
 RUN npx tsc
 RUN npm uninstall typescript
 
-FROM node:lts-slim as artifact
+FROM node:latest as artifact
 WORKDIR /app
-
-# Debugging: List files in the /app directory
-RUN ls -al /app
-
 COPY --from=buildStage /app/dist ./dist
 COPY --from=buildStage /app/node_modules ./node_modules
 
-ENV PORT=3000
-EXPOSE 3000
+ENV PORT=8181
+EXPOSE 8181
 CMD [ "node", "./dist/server.js" ]
-
