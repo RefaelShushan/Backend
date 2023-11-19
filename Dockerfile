@@ -5,6 +5,6 @@ RUN npm install
 # RUN npm install cheerio @types/cheerio
 COPY ./src ./src
 RUN tsc
-ENV PORT=8181
-EXPOSE 8181
+ENV PORT=3000
+EXPOSE 3000
 CMD [ "node", "./dist/server.js" ]
