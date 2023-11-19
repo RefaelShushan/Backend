@@ -49,7 +49,6 @@ export const readTopProductsService = async (): Promise<
 > => {
   try {
     const data = await readTopProductsDal();
-    console.log(data, "ggg");
     return data;
   } catch (err) {
     console.error("at userService.js, line 14, func (getAllItems)");

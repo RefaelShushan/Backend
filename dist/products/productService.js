@@ -53,7 +53,6 @@ exports.getserviceByCategory = getserviceByCategory;
 const readTopProductsService = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, productDal_1.readTopProductsDal)();
-        console.log(data, "ggg");
         return data;
     }
     catch (err) {
