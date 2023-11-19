@@ -4,7 +4,8 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import config from "config";
 // import { handleError } from "../../utils/handleErrors";
 
-const KEY = config.get<string | null>("JWT_KEY");
+// const KEY = config.get<string | null>("JWT_KEY");
+const KEY="1234"
 
 export const generateAuthToken = (user: UserInterface) => {
   const { _id, isAdmin, email } = user;
