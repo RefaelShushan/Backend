@@ -20,7 +20,7 @@ COPY ./src ./src
 
 # Run TypeScript compiler
 RUN tsc
-
+ENV SUPPRESS_NO_CONFIG_WARNING true
 # Set environment variables
 ENV PORT=3000
 
