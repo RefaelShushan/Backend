@@ -10,6 +10,10 @@ RUN npm install
 # Debugging: List files in the current directory after npm install
 RUN ls -al
 
+# Debugging: List files in the ./src directory and show tsconfig.json
+RUN ls -al ./src
+RUN cat tsconfig.json
+
 COPY ./src ./src
 RUN npx tsc
 RUN npm uninstall typescript
@@ -26,5 +30,3 @@ COPY --from=buildStage /app/node_modules ./node_modules
 ENV PORT=3000
 EXPOSE 3000
 CMD [ "node", "./dist/server.js" ]
-
-
