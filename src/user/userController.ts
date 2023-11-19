@@ -48,8 +48,8 @@ export const login = async (req: Request, res: Response) => {
       throw new Error("The email or password is incorrect!");
 
     const token = generateAuthToken(userInDB);
-    res.send(userFromClient.email);
-    // res.send(token)
+    // res.send(userFromClient.email);
+    res.send(token)
     return token;
   } catch (error) {
     res.json({ message: "The email or password is incorrect" });
